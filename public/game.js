@@ -33,8 +33,49 @@ const database = new Databases(client)
             account.createEmailSession(
                 event.target.elements['register-email'].value,
                 event.target.elements['register-password'].value
-            )
+            ).then(() => {
+                showDisplay()
+            })
 
         }).catch(error => console.error(error))
         event.preventDefault()
     }
+
+    function login(event) {
+
+    }
+
+    function showDisplay() {
+       const modalElement =  document.getElementById('modal')
+       modalElement.classList.add('hidden')
+    }
+
+    showDisplay()
+
+//Kaboom Game
+
+    function startGame() {
+        kaboom({
+            global: true,
+            fullscreen: true,
+            scale: 2
+        })
+
+        //Speed identifiers 
+        const moveSpeed = 120
+        const jumpForce = 350
+        const bigJumpForce = 550
+        let currentJumpForce = jumpForce
+        const fallDeath  = 400
+        const enemyDeath = 20
+
+
+        //Game Logic 
+        // https://codesandbox.io/s/j6r3o?file=/src/index.js:130-198 //
+        let isJumping = true
+
+        loadRoot("https://i.imgur.com/");
+        loadSprite("coin", "wbKxhcd.png");
+
+    }
+    startGame()
