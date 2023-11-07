@@ -1,7 +1,7 @@
 const { Client, Account, Databases, ID, Query } = Appwrite
 const projectId = '6545c881c2b7cf50da30'
-const databaseId = ''
-const collectionId = ''
+const databaseId = '6549ba3f4db14f37b44c'
+const collectionId = '6549ba6687ff43080559'
 
 
 const client = new Client()
@@ -9,6 +9,7 @@ const client = new Client()
     .setProject(projectId)
 
 const account = new Account(client)
+const database = new Databases(client)
 
 
     function register(event) {
@@ -19,8 +20,16 @@ const account = new Account(client)
             event.target.elements['register-username'].value
         ).then(response => {
             console.log(response)
-            // create a document in a database
-
+            database.createDocument(
+                databaseId,
+                collectionId,
+                response.$id,
+                {
+                    "userId": response.$id,
+                    "highscore": 0 
+                }
+                
+            )
             account.createEmailSession(
                 event.target.elements['register-email'].value,
                 event.target.elements['register-password'].value
