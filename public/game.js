@@ -67,7 +67,7 @@ const database = new Databases(client)
         const jumpForce = 350
         const bigJumpForce = 550
         let currentJumpForce = jumpForce
-        const fallDeath  = 401
+        const fallDeath  = 400
         const enemyDeath = 20
 
 
